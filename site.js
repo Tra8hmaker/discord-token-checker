@@ -25,6 +25,7 @@ function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'ja' : 'en';
     updateLanguage();
     updateBackButtonURL();
+    updateBookmarkletPreview();
 }
 
 function updateLanguage() {
@@ -53,6 +54,7 @@ function toggleTheme() {
     document.getElementById('themeText').textContent = isDark ? '☀️' : '🌙';
     sessionStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateBackButtonURL();
+    updateBookmarkletPreview();
 }
 
 // Update back button URL with current settings
@@ -71,6 +73,24 @@ function getBookmarkletCode() {
         theme: document.body.classList.contains('dark-mode') ? 'dark' : 'light'
     };
     return window.BOOKMARKLET_GENERATOR.getCode();
+}
+
+// ブックマークレットプレビューを更新
+function updateBookmarkletPreview() {
+    const config = {
+        lang: currentLang,
+        theme: document.body.classList.contains('dark-mode') ? 'dark' : 'light'
+    };
+    console.log('ブックマークレット設定が更新されました:', config);
+    console.log('言語:', config.lang === 'ja' ? '日本語' : '英語');
+    console.log('テーマ:', config.theme === 'dark' ? 'ダークモード' : 'ライトモード');
+    
+    // 手動コピーのテキストエリアが開いている場合、内容を更新
+    const manualSection = document.getElementById('manualSection');
+    const textarea = document.getElementById('codeTextarea');
+    if (manualSection && manualSection.style.display !== 'none') {
+        textarea.value = getBookmarkletCode();
+    }
 }
 
 // Copy button functionality
@@ -154,5 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update back button URL with current settings
     updateBackButtonURL();
+    
+    // 初回のブックマークレット設定を表示
+    updateBookmarkletPreview();
 });
 
