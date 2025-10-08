@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Token Checker - トークンの取得方法 / How to Get Token</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Body Font (similar to Discord) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Discord Token Checker Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- Discord Token Checker - Bookmarklet Generator -->
+    <script src="./bookmarklet.js"></script>
+    
+    <!-- Discord Token Checker - Site Script -->
+    <script src="./site.js" defer></script>
+</head>
+<body>
+    <!-- Header Controls -->
+    <div class="header-controls">
+        <div class="header-controls-left">
+            <a href="#" class="back-btn" id="backBtn" style="display: none;">← Back to App</a>
+        </div>
+        <div class="header-controls-right">
+            <button class="lang-btn" id="languageBtn" onclick="toggleLanguage()">
+                <span id="languageText">English</span>
+            </button>
+            <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+                <span id="themeText">🌙</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>
+            <span data-lang="ja" class="lang-hidden">
+                <div class="title-line">DISCORD</div>
+                <div class="title-line">トークン確認方法</div>
+            </span>
+            <span data-lang="en">
+                <div class="title-line">DISCORD</div>
+                <div class="title-line">HOW TO GET TOKEN</div>
+            </span>
+        </h1>
+
+        <div class="step step-intro">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">説明</span>
+                <span data-lang="en">Overview</span>
+            </h2>
+            <div>
+                <p class="step-description">
+                    <span data-lang="ja" class="lang-hidden">この方法では<span style="color: #5865f2;">ブックマークレット</span>（ブックマークとして保存できる小さなプログラム）を使用します。通常のブックマークと違い、クリックするとページ上で機能を実行します。</span>
+                    <span data-lang="en">This method uses a <span style="color: #5865f2;">bookmarklet</span> (a small program saved as a bookmark). Unlike regular bookmarks, it executes functions when clicked.</span>
+                </p>
+                <p class="step-description">
+                    <span data-lang="ja" class="lang-hidden">パソコン版、スマホ版共通して使えるやり方です。この例では<span style="color: #5865f2;">Chromeブラウザ（推奨）</span>を使用したスマホ版を説明していきます。</span>
+                    <span data-lang="en">This method works for both PC and mobile. This guide uses <span style="color: #5865f2;">Chrome browser (recommended)</span> on mobile as an example.</span>
+                </p>
+
+                <div class="warning-note">
+                    <strong>
+                        <span data-lang="ja" class="lang-hidden">セキュリティについて：</span>
+                        <span data-lang="en">Security Notice:</span>
+                    </strong>
+                    <span data-lang="ja" class="lang-hidden">このやり方で得られるトークンという情報は、誰かと共有するとその人があなたのアカウントにログインできてしまいます。絶対に他人と共有しないでください。</span>
+                    <span data-lang="en">If you share the token obtained through this method with someone, that person can log into your account. Never share it with others.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">1. ブックマークレットをコピー</span>
+                <span data-lang="en">1. Copy Bookmarklet Code</span>
+            </h2>
+            
+            <div>
+                <div class="button-group">
+                    <button class="copy-btn" id="copyBtn">
+                        <span data-lang="ja" class="lang-hidden">コードをコピー</span>
+                        <span data-lang="en">Copy Code</span>
+                    </button>
+                    <button class="delete-textarea-btn" id="deleteTextareaBtn">
+                        <span data-lang="ja" class="lang-hidden">手動でコピー</span>
+                        <span data-lang="en">Manual Copy</span>
+            </button>
+                </div>
+
+                <div class="manual-section" id="manualSection" style="display: none;">
+                    <textarea id="codeTextarea" class="code-textarea" readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">2. 適当なページを準備としてブックマーク</span>
+                <span data-lang="en">2. Bookmark Any Page as Preparation</span>
+            </h2>
+            
+            <div>
+                <p class="step-description">
+                    <span data-lang="ja" class="lang-hidden">適当なページをブックマークします。後で編集してコードに置き換えます。</span>
+                    <span data-lang="en">Bookmark any page. You'll edit it later and replace with the code.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">3. ブックマークを編集</span>
+                <span data-lang="en">3. Edit the Bookmark</span>
+            </h2>
+            
+            <div>
+                <div class="instruction-text">
+                    <p>
+                        <span data-lang="ja" class="lang-hidden">名前フィールドを消して、任意の名前に変更します（例：「トークン確認用」）。</span>
+                        <span data-lang="en">Clear the name field and change it to any name you like (e.g., "Token Checker").</span>
+                    </p>
+                </div>
+                <div class="image-grid">
+                <div class="image-item">
+                        <img src="./img/step3-1.jpg" alt="Edit Name">
+                    </div>
+                </div>
+                
+                <div class="instruction-text">
+                    <p>
+                        <span data-lang="ja" class="lang-hidden">URLフィールドを削除し、Step 1でコピーしたコードを貼り付けて保存します。</span>
+                        <span data-lang="en">Delete the URL field and paste the code from Step 1, then save.</span>
+                    </p>
+                </div>
+
+                <div class="image-grid">
+                <div class="image-item">
+                        <img src="./img/step3-2.jpg" alt="Paste Code">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">4. Discordにログイン</span>
+                <span data-lang="en">4. Login to Discord</span>
+            </h2>
+            
+            <div>
+                <p class="step-description">
+                    <span data-lang="ja" class="lang-hidden">ブラウザ版でログインします。スマホアプリ、デスクトップアプリでは動作しません。必ずブラウザ版を使用してください。</span>
+                    <span data-lang="en">Login in your browser. This won't work with mobile or desktop apps. You must use the browser version.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <h2 class="step-title">
+                <span data-lang="ja" class="lang-hidden">5. トークンを取得</span>
+                <span data-lang="en">5. Get Your Token</span>
+            </h2>
+            
+            <div>
+                <div class="instruction-text">
+                    <p>
+                        <span data-lang="ja" class="lang-hidden">ログインした状態で、ブラウザの検索バーをタップします。</span>
+                        <span data-lang="en">While logged in, tap the browser's address bar.</span>
+                    </p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="./img/step5-1.png" alt="Search bar">
+                    </div>
+                </div>
+                
+                <div class="instruction-text">
+                    <p>
+                        <span data-lang="ja" class="lang-hidden">Step 3で設定したブックマーク名（例：「トークン確認用」）を検索し、ブックマークが見つかったらタップして実行します。</span>
+                        <span data-lang="en">Search for the bookmark name you set in Step 3 (e.g., "Token Checker"), and once found, tap it to execute.</span>
+                    </p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="./img/step5-2.png" alt="Execute bookmark">
+                    </div>
+                </div>
+                
+                <div class="instruction-text">
+                    <p>
+                        <span data-lang="ja" class="lang-hidden">ポップアップが表示され、あなたのトークンが表示されます。</span>
+                        <span data-lang="en">A popup will appear showing your token.</span>
+                    </p>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="./img/step5-3.png" alt="Token displayed">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
