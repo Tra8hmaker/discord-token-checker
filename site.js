@@ -75,17 +75,17 @@ function getBookmarkletCode() {
     return window.BOOKMARKLET_GENERATOR.getCode();
 }
 
-// ブックマークレットプレビューを更新
+// Update bookmarklet preview
 function updateBookmarkletPreview() {
     const config = {
         lang: currentLang,
         theme: document.body.classList.contains('dark-mode') ? 'dark' : 'light'
     };
-    console.log('ブックマークレット設定が更新されました:', config);
-    console.log('言語:', config.lang === 'ja' ? '日本語' : '英語');
-    console.log('テーマ:', config.theme === 'dark' ? 'ダークモード' : 'ライトモード');
+    console.log('Bookmarklet config updated:', config);
+    console.log('Language:', config.lang === 'ja' ? 'Japanese' : 'English');
+    console.log('Theme:', config.theme === 'dark' ? 'Dark Mode' : 'Light Mode');
     
-    // 手動コピーのテキストエリアが開いている場合、内容を更新
+    // Update manual copy textarea if visible
     const manualSection = document.getElementById('manualSection');
     const textarea = document.getElementById('codeTextarea');
     if (manualSection && manualSection.style.display !== 'none') {
