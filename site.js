@@ -39,7 +39,7 @@ function updateLanguage() {
     
     // Update page title based on language
     document.title = currentLang === 'en' 
-        ? 'How to Get Discord Token'
+        ? 'Get Your Discord Token'
         : 'Discordのトークン確認方法';
     
     // Update language button text
